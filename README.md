@@ -1,5 +1,5 @@
 # OMDbAPI
-PHP class to communicate with OMDbAPI.com API by Brian Fritz
+PHP class to communicate with [OMDbAPI.com](http://omdbapi.com) API by Brian Fritz
 
 ## How to Use
 
