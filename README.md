@@ -1,12 +1,11 @@
 # OMDbAPI
-PHP class to communicate with [OMDbAPI.com](http://omdbapi.com) API by Brian Fritz
+PHP class to communicate with OMDbAPI.com API by Brian Fritz
 
 ## How to Use
 
 Include the file 
 
 ```php
-
 include_once('OMDbAPI.php');
 
 ```
@@ -17,7 +16,6 @@ Requires search keyword and accepts type (movie, series or episode) & year
 
 
 ```php
-
 $omdb->search($keyword, $type, $year);
 
 ```
@@ -26,7 +24,6 @@ Example usage
 
 
 ```php
-
 $omdb = new OMDbAPI();
 
 $omdb->search('spider');
@@ -36,7 +33,6 @@ $omdb->search('spider');
 Output
 
 ```php
-
 stdClass Object
 (
     [code] => 200
@@ -132,7 +128,6 @@ stdClass Object
 Usage examples
 
 ```php
-
 // search for all 'series' that contain 'spider' in the title
 $omdb->search('spider', 'series');
 
@@ -148,11 +143,45 @@ Fetch details of a movie, series or episode. details can be fetched by either IM
 Usage example
 
 ```php
-
 // get details for IMDB ID 'tt0338013'
 $omdb->fetch('i', 'tt0338013');
 
 // get details for title 'eternal sunshine'
 $omdb->fetch('t', 'eternal sunshine');
+
+```
+
+Output for both of the above queires
+
+```php
+stdClass Object
+(
+    [code] => 200
+    [message] => OK
+    [data] => stdClass Object
+        (
+            [Title] => Eternal Sunshine of the Spotless Mind
+            [Year] => 2004
+            [Rated] => R
+            [Released] => 19 Mar 2004
+            [Runtime] => 108 min
+            [Genre] => Drama, Romance, Sci-Fi
+            [Director] => Michel Gondry
+            [Writer] => Charlie Kaufman (story), Michel Gondry (story), Pierre Bismuth (story), Charlie Kaufman (screenplay)
+            [Actors] => Jim Carrey, Kate Winslet, Gerry Robert Byrne, Elijah Wood
+            [Plot] => When their relationship turns sour, a couple undergoes a procedure to have each other erased from their memories. But it is only through the process of loss that they discover what they had to begin with.
+            [Language] => English
+            [Country] => USA
+            [Awards] => Won 1 Oscar. Another 64 wins & 62 nominations.
+            [Poster] => http://ia.media-imdb.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_SX300.jpg
+            [Metascore] => 89
+            [imdbRating] => 8.4
+            [imdbVotes] => 533,088
+            [imdbID] => tt0338013
+            [Type] => movie
+            [Response] => True
+        )
+
+)
 
 ```
