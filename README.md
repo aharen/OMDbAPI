@@ -5,8 +5,17 @@ PHP class to communicate with OMDbAPI.com API by Brian Fritz
 
 Include the file 
 
-```php
-include_once('OMDbAPI.php');
+```
+composer require aharen/omdbapi
+
+```
+
+Or update your composer.json file accordingly
+
+```
+require {
+    "aharen/omdbapi" : "2.0.*"
+}
 
 ```
 
