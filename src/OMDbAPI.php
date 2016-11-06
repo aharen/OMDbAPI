@@ -155,13 +155,13 @@ class OMDbAPI
             $data = json_decode($body->getContents());
 
         } catch (RequestException $e) {
-            $code    = $response->getStatusCode();
-            $message = $response->getReasonPhrase();
+            $code    = $e->getStatusCode();
+            $message = $e->getReasonPhrase();
             $data    = $e->getRequest();
 
         } catch (ClientException $e) {
-            $code    = $response->getStatusCode();
-            $message = $response->getReasonPhrase();
+            $code    = $e->getStatusCode();
+            $message = $e->getReasonPhrase();
             $data    = $e->getRequest();
         }
 
