@@ -144,6 +144,15 @@ $omdb->search('spider', 'series');
 $omdb->search('spider', 'series', '2014');
 
 ```
+### Associative mode
+
+You can also use this library in associative mode, resulting in arrays instead of stdClass
+instances, passing the second constructor argument to true:
+
+```
+// Associative mode (results will be associative arrays)
+$omdb = new OMDbAPI(null, true);
+```
 
 ### Fetch movie details
 

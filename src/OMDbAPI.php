@@ -38,17 +38,25 @@ class OMDbAPI
     protected $api_key = '';
 
     /**
+     * Should the answers be given as associative arrays ?
+     *
+     * @var bool
+     */
+    protected $assoc = false;
+
+    /**
      * Create a new OMDbAPI instance
      *
      * @param string $api_key
      * @return void
      */
-    public function __construct($api_key = null)
+    public function __construct($api_key = null, $assoc = false)
     {
         $api_host     = (is_null($api_key)) ? $this->host : $this->img_host;
         $this->client = new Client([
             'base_uri' => $api_host,
         ]);
+        $this->assoc = $assoc;
 
         $this->api_key = $api_key;
     }
@@ -152,7 +160,7 @@ class OMDbAPI
             $message = $response->getReasonPhrase();
 
             $body = $response->getBody();
-            $data = json_decode($body->getContents());
+            $data = json_decode($body->getContents(), $this->assoc);
 
         } catch (RequestException $e) {
             $code    = $e->getStatusCode();
@@ -178,11 +186,17 @@ class OMDbAPI
      */
     protected function output($code, $message, $data = null)
     {
-        return (object) [
+        $result = [
             'code'    => $code,
             'message' => $message,
             'data'    => $data,
         ];
+
+        if (!$this->assoc) {
+            $result = (object) $result;
+        }
+
+        return $result;
     }
 
     /**
