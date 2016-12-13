@@ -89,9 +89,10 @@ class OMDbAPI
      *
      * @param string $field
      * @param string $keyword
+     * @param array $parameters extra parameters
      * @return array
      */
-    public function fetch($field, $keyword)
+    public function fetch($field, $keyword, array $parameters = array())
     {
         if ((!isset($field) && empty($field)) || (!isset($keyword) && empty($keyword))) {
             return $this->output('400', 'Missing required fields');
@@ -105,7 +106,8 @@ class OMDbAPI
             return $this->output('400', 'Invalid IMDB ID provided');
         }
 
-        $api_uri = '?' . $field . '=' . urlencode($keyword);
+        $parameters[$field] = $keyword;
+        $api_uri = '?' . http_build_query($parameters);
         return $this->get($api_uri);
     }
 

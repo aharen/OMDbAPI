@@ -25,6 +25,10 @@ Requires search keyword and accepts type (movie, series or episode) & year
 
 
 ```php
+use aharen\OMDbAPI();
+
+$omdb = new OMDbAPI();
+
 $omdb->search($keyword, $type, $year);
 
 ```
@@ -33,8 +37,6 @@ Example usage
 
 
 ```php
-$omdb = new OMDbAPI();
-
 $omdb->search('spider');
 
 ```
@@ -166,7 +168,6 @@ $omdb->fetch('i', 'tt0338013');
 
 // get details for title 'eternal sunshine'
 $omdb->fetch('t', 'eternal sunshine');
-
 ```
 
 Output for both of the above queires
@@ -201,5 +202,15 @@ stdClass Object
         )
 
 )
-
 ```
+
+### Fetching episodes details
+
+You can also use the `fetch` third parameter to add extra parameters, for instance:
+
+```php
+//                 Dexter (TV show)
+$omdb->fetch('i', 'tt0773262', ['Season' => 1])
+```
+
+This will add the `Season=1` parameter
