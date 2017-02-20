@@ -214,3 +214,7 @@ $omdb->fetch('i', 'tt0773262', ['Season' => 1])
 ```
 
 This will add the `Season=1` parameter
+
+## Credits
+
+Unit Tests & Associative Mode by [@Gregwar](https://github.com/Gregwar) (Cheers)
