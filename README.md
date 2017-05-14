@@ -19,6 +19,19 @@ require {
 
 ```
 
+### Initiating
+
+Since the API will be going private ([read about it](https://www.patreon.com/posts/api-is-going-10743518)) & would be requiring the API key, a small change has been made to how the API will be initiated and how the Poster API will be used.
+
+```php
+use aharen\OMDbAPI();
+
+$omdb = new OMDbAPI($api_key, $image_host, $assoc);
+
+```
+
+The first parameter will be the API Key, the secound is the host to use (false = omdbapi, true = poster api, false by default) & third is assoc (true = assoc on, false = assoc off, false by default)
+
 ### Search OMDb API
 
 Requires search keyword and accepts type (movie, series or episode) & year

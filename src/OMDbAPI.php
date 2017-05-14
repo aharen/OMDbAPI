@@ -50,9 +50,9 @@ class OMDbAPI
      * @param string $api_key
      * @return void
      */
-    public function __construct($api_key = null, $assoc = false)
+    public function __construct($api_key = null, $image_host = false, $assoc = false)
     {
-        $api_host     = (is_null($api_key)) ? $this->host : $this->img_host;
+        $api_host     = ($image_host === false) ? $this->host : $this->img_host;
         $this->client = new Client([
             'base_uri' => $api_host,
         ]);
@@ -81,6 +81,10 @@ class OMDbAPI
             $api_uri .= '&y=' . urlencode($year);
         }
 
+        if (!is_null($this->api_key)) {
+            $api_uri .= '&apikey=' . $this->api_key;
+        }
+
         return $this->get($api_uri);
     }
 
@@ -107,7 +111,10 @@ class OMDbAPI
         }
 
         $parameters[$field] = $keyword;
-        $api_uri = '?' . http_build_query($parameters);
+        $api_uri            = '?' . http_build_query($parameters);
+        if (!is_null($this->api_key)) {
+            $api_uri .= '&apikey=' . $this->api_key;
+        }
         return $this->get($api_uri);
     }
 
