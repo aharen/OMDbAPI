@@ -173,13 +173,13 @@ class OMDbAPI
 
         } catch (RequestException $e) {
             $code    = 500;
-            $message = $e->getResponse();
-            $data    = $e->getRequest();
+            $message = 'RequestException';
+            $data    = $e->getMessage();
 
         } catch (ClientException $e) {
             $code    = 500;
-            $message = $e->getResponse();
-            $data    = $e->getRequest();
+            $message = 'RequestException';
+            $data    = $e->getMessage();
         }
 
         return $this->output($code, $message, $data);
