@@ -38,7 +38,7 @@ Requires search keyword and accepts type (movie, series or episode) & year
 
 
 ```php
-use aharen\OMDbAPI();
+use aharen\OMDbAPI;
 
 $omdb = new OMDbAPI();
 
