@@ -1,18 +1,19 @@
 <?php
 
 use aharen\OMDbAPI;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit testing for OMDB.
  */
-class OMDBTests extends \PHPUnit_Framework_TestCase
+class OMDBTests extends TestCase
 {
     /**
      * Testing the search
      */
     public function testSearch()
     {
-        $omdb = new aharen\OMDbAPI();
+        $omdb = new aharen\OMDbAPI($_ENV['OMDB_KEY']);
         $result = $omdb->search('matrix');
 
         $this->assertInstanceOf(stdClass::class, $result);
@@ -36,12 +37,11 @@ class OMDBTests extends \PHPUnit_Framework_TestCase
      */
     public function testFetch()
     {
-        $omdb = new aharen\OMDbAPI();
+        $omdb = new aharen\OMDbAPI($_ENV['OMDB_KEY']);
 
         $result = $omdb->fetch('i', 'tt0338013');
         $this->assertEquals(200, $result->code);
         $this->assertEquals('Eternal Sunshine of the Spotless Mind', $result->data->Title);
-        
         $result = $omdb->fetch('t', 'Eternal Sunshine of the Spotless Mind');
         $this->assertEquals(200, $result->code);
         $this->assertEquals('Eternal Sunshine of the Spotless Mind', $result->data->Title);
@@ -52,7 +52,7 @@ class OMDBTests extends \PHPUnit_Framework_TestCase
      */
     public function testSearchAssoc()
     {
-        $omdb = new aharen\OMDbAPI(null, true);
+        $omdb = new aharen\OMDbAPI($_ENV['OMDB_KEY'], false, true);
         $result = $omdb->search('matrix');
 
         $this->assertTrue(is_array($result));
@@ -76,7 +76,7 @@ class OMDBTests extends \PHPUnit_Framework_TestCase
      */
     public function testParameters()
     {
-        $omdb = new aharen\OMDbAPI();
+        $omdb = new aharen\OMDbAPI($_ENV['OMDB_KEY']);
         $result = $omdb->fetch('i', 'tt0773262', ['Season' => 1]);
 
         $this->assertEquals(200, $result->code);
