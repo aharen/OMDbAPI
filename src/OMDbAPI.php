@@ -8,13 +8,12 @@ use GuzzleHttp\Exception\RequestException;
 
 class OMDbAPI
 {
-
     /**
      * Set the OMDbAPI.com api uri
      *
      * @var string
      */
-    protected $host = 'http://www.omdbapi.com';
+    protected $host = 'https://www.omdbapi.com';
 
     /**
      * Guzzle Client instance
@@ -28,7 +27,7 @@ class OMDbAPI
      *
      * @var string
      */
-    protected $img_host = 'http://img.omdbapi.com';
+    protected $img_host = 'https://img.omdbapi.com';
 
     /**
      * OMDbAPI Poster API Key
@@ -71,7 +70,6 @@ class OMDbAPI
      */
     public function search($keyword, $type = null, $year = null)
     {
-
         $api_uri = '?s=' . urlencode($keyword);
         if ($type !== null) {
             $api_uri .= '&type=' . urlencode($type);
@@ -170,12 +168,10 @@ class OMDbAPI
 
             $body = $response->getBody();
             $data = json_decode($body->getContents(), $this->assoc);
-
         } catch (RequestException $e) {
             $code    = 500;
             $message = 'RequestException';
             $data    = $e->getMessage();
-
         } catch (ClientException $e) {
             $code    = 500;
             $message = 'RequestException';
