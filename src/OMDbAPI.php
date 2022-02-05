@@ -212,6 +212,6 @@ class OMDbAPI
      */
     public function validateIMDBid($imdbid)
     {
-        return preg_match("/tt\\d{7}/", $imdbid);
+        return preg_match("/tt\\d{8}/", $imdbid);
     }
 }
