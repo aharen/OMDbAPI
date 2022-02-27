@@ -1,5 +1,5 @@
 {
-    "name": "aharen/omdbapi",
+    "name": "skyraptor/omdbapi",
     "description": "PHP package for OMDbAPI.com by Brian Fritz",
     "keywords": ["movies", "tv shows", "omdb api"],
     "license": "MIT",
