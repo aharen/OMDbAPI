@@ -66,9 +66,9 @@ class OMDbAPI
      * @param string $keyword
      * @param string $type
      * @param string $year
-     * @return array
+     * @return array|object
      */
-    public function search($keyword, $type = null, $year = null)
+    public function search($keyword, $type = null, $year = null): array|object
     {
         $api_uri = '?s=' . urlencode($keyword);
         if ($type !== null) {
