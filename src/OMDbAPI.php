@@ -92,7 +92,7 @@ class OMDbAPI
      * @param string $field
      * @param string $keyword
      * @param array $parameters extra parameters
-     * @return array
+     * @return array|object
      */
     public function fetch($field, $keyword, array $parameters = array())
     {
